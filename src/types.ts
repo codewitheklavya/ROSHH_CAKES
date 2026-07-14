@@ -10,7 +10,7 @@ export interface Cake {
   isFeatured?: boolean;
 }
 
-export type CakeCategory = 'birthday' | 'anniversary' | 'bento' | 'custom' | 'wedding';
+export type CakeCategory = 'birthday' | 'anniversary' | 'bento' | 'custom' | 'wedding' | 'jar' | 'donut';
 
 export interface Testimonial {
   id: string;

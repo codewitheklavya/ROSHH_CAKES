@@ -141,6 +141,60 @@ export default function About() {
         </div>
       </section>
 
+      {/* ══════════════ HAPPY CUSTOMERS ══════════════ */}
+      <section className="py-20 bg-secondary/20 border-t border-secondary/50">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <SectionHeading
+            title="Our Happy Customers"
+            subtitle="The smiles and sweet moments we've had the pleasure of sharing."
+          />
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
+            {[
+              {
+                src: '/happyCustomer/customer collage.png',
+                alt: 'ROSHH CAKES Happy Customers Collage 1',
+                title: 'Celebrations Filled with Joy',
+                description: 'Moments of laughter and sweet memories shared by our lovely customers across Ranchi.'
+              },
+              {
+                src: '/happyCustomer/collage 2.png',
+                alt: 'ROSHH CAKES Happy Customers Collage 2',
+                title: 'Baked with Love & Smiles',
+                description: 'Celebrating milestones, birthdays, anniversaries, and everything in between with our signature custom creations.'
+              }
+            ].map((collage, i) => (
+              <motion.div
+                key={collage.src}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: i * 0.15 }}
+                className="bg-white rounded-3xl overflow-hidden shadow-md shadow-accent/5 hover:shadow-xl hover:shadow-accent/10 transition-all duration-500 group"
+              >
+                <div className="relative overflow-hidden aspect-[4/3]">
+                  <img
+                    src={collage.src}
+                    alt={collage.alt}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+                </div>
+                <div className="p-6">
+                  <h3 className="font-heading text-xl font-bold text-text mb-2 group-hover:text-accent transition-colors duration-300">
+                    {collage.title}
+                  </h3>
+                  <p className="text-text-light text-sm leading-relaxed">
+                    {collage.description}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Image Band */}
       <section className="py-20 bg-bg">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">

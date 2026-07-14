@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Leaf, ShieldCheck } from 'lucide-react';
+import { Sparkles } from 'lucide-react';
 import type { Cake } from '../types';
 
 interface CakeCardProps {
@@ -18,31 +18,31 @@ export default function CakeCard({ cake, index = 0 }: CakeCardProps) {
       className="group bg-white rounded-2xl overflow-hidden shadow-md shadow-accent/5 hover:shadow-xl hover:shadow-accent/10 transition-all duration-500 flex flex-col"
     >
       {/* Image */}
-      <div className="relative overflow-hidden aspect-[4/3]">
-        <img
-          src={cake.image}
-          alt={cake.name}
-          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-          loading="lazy"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-        {/* Badges */}
-        <div className="absolute top-3 left-3 flex gap-2">
-          {cake.isEggless && (
-            <span className="px-2.5 py-1 bg-green-500 text-white text-xs font-semibold rounded-full flex items-center gap-1 shadow-lg">
-              <Leaf className="w-3 h-3" /> Eggless
+      <div className="relative overflow-hidden aspect-[4/3] bg-secondary/35">
+        {cake.image ? (
+          <>
+            <img
+              src={cake.image}
+              alt={cake.name}
+              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              loading="lazy"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+          </>
+        ) : (
+          <div className="w-full h-full bg-gradient-to-br from-accent/5 via-secondary to-accent/15 flex flex-col items-center justify-center p-4 text-center">
+            <span className="w-12 h-12 rounded-full bg-white flex items-center justify-center text-accent shadow-sm mb-2 group-hover:scale-110 transition-transform duration-300">
+              <Sparkles className="w-5 h-5" />
             </span>
-          )}
-          {!cake.isEggless && (
-            <span className="px-2.5 py-1 bg-amber-500 text-white text-xs font-semibold rounded-full flex items-center gap-1 shadow-lg">
-              <ShieldCheck className="w-3 h-3" /> Egg
+            <span className="font-heading font-bold text-accent text-sm tracking-wide">
+              {cake.category === 'donut' ? 'Donut' : cake.category.charAt(0).toUpperCase() + cake.category.slice(1)}
             </span>
-          )}
-        </div>
+            <span className="text-[10px] text-text-light/75 font-medium mt-1">Coming Soon</span>
+          </div>
+        )}
 
         {cake.isFeatured && (
-          <span className="absolute top-3 right-3 px-2.5 py-1 bg-gold text-white text-xs font-bold rounded-full shadow-lg">
+          <span className="absolute top-3 right-3 px-2.5 py-1 bg-gold text-white text-xs font-bold rounded-full shadow-lg z-10">
             ★ Featured
           </span>
         )}

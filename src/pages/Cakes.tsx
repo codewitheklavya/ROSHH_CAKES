@@ -15,6 +15,8 @@ const filters: { key: Filter; label: string }[] = [
   { key: 'bento', label: 'Bento' },
   { key: 'wedding', label: 'Wedding' },
   { key: 'custom', label: 'Custom' },
+  { key: 'jar', label: 'Jar Cakes' },
+  { key: 'donut', label: 'Donuts' },
 ];
 
 export default function Cakes() {
@@ -28,7 +30,7 @@ export default function Cakes() {
         <title>Our Cakes — ROSHH CAKES</title>
         <meta
           name="description"
-          content="Browse our collection of premium cakes — birthday, anniversary, bento, wedding, and custom designs."
+          content="Browse our collection of premium cakes and treats — birthday, anniversary, bento, wedding, jar cakes, donuts, and custom designs."
         />
       </Helmet>
 

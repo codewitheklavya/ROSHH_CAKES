@@ -23,31 +23,31 @@ import { cakes, categories, testimonials } from '../data/cakes';
 
 const heroSlides = [
   {
-    image: "/heroCake/ChatGPT Image Jul 9, 2026, 05_19_26 PM.png",
+    image: "/store/Hero section.png",
     tag: '✨ Premium Bakery in Ranchi',
     title: 'ROSHH',
     titleAccent: 'CAKES',
     subtitle: 'Where every slice tells a story. Handcrafted premium cakes for birthdays, weddings, anniversaries & every sweet moment in between.',
   },
   {
-    image: "/birthdayCake/ChatGPT Image Jul 9, 2026, 05_18_50 PM.png",
+    image: "/heroCake/ChatGPT Image Jul 14, 2026, 05_00_06 PM.png",
     tag: '🎂 Birthday Specials',
     title: 'Celebrate',
     titleAccent: 'Every Moment',
     subtitle: 'Make every birthday unforgettable with our custom-designed, freshly baked birthday cakes crafted with love.',
   },
   {
-    image: "/anniversaryCake/ChatGPT Image Jul 9, 2026, 05_19_19 PM.png",
+    image: "/store/hero.png",
     tag: '💍 Anniversary Collection',
     title: 'Cakes That',
     titleAccent: 'Tell Stories',
     subtitle: 'Celebrate your love journey with elegant, multi-tiered anniversary masterpieces tailored to your unique story.',
   },
   {
-    image: "/BentoCakes/ChatGPT Image Jul 9, 2026, 05_19_04 PM.png",
-    tag: '🎁 Bento Cakes',
-    title: 'Tiny Cakes',
-    titleAccent: 'Big Love',
+    image: "/heroCake/ChatGPT Image Jul 14, 2026, 04_45_25 PM.png",
+    tag: '🎁 Custom Cakes',
+    title: 'Cake has',
+    titleAccent: 'Big Heart',
     subtitle: 'Adorable, perfectly portioned bento cakes — the perfect gift for any sweet occasion, big or small.',
   },
 ];
@@ -211,8 +211,8 @@ export default function Home() {
               key={i}
               onClick={() => goToSlide(i)}
               className={`transition-all duration-400 rounded-full ${i === currentSlide
-                  ? 'w-8 h-2.5 bg-accent'
-                  : 'w-2.5 h-2.5 bg-white/40 hover:bg-white/60'
+                ? 'w-8 h-2.5 bg-accent'
+                : 'w-2.5 h-2.5 bg-white/40 hover:bg-white/60'
                 }`}
               aria-label={`Go to slide ${i + 1}`}
             />
