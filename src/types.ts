@@ -37,6 +37,7 @@ export interface OrderFormData {
   deliveryDate: string;
   messageOnCake: string;
   additionalNotes: string;
+  customCakeText?: string;
 }
 
 export interface Category {

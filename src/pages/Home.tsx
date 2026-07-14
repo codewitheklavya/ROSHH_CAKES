@@ -317,23 +317,56 @@ export default function Home() {
             subtitle="Every detail matters when it comes to your celebration."
           />
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {whyChooseUs.map((item, i) => (
-              <motion.div
-                key={item.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="group bg-white rounded-2xl p-6 text-center shadow-sm hover:shadow-lg hover:shadow-accent/10 hover:-translate-y-1 transition-all duration-500"
-              >
-                <div className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-secondary flex items-center justify-center group-hover:bg-accent group-hover:text-white text-accent transition-all duration-500">
-                  <item.icon className="w-7 h-7" />
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mt-12">
+            {/* Left side: Why choose us points */}
+            <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6">
+              {whyChooseUs.map((item, i) => (
+                <motion.div
+                  key={item.title}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1 }}
+                  className="group bg-white rounded-2xl p-6 text-center shadow-sm hover:shadow-lg hover:shadow-accent/10 hover:-translate-y-1 transition-all duration-500"
+                >
+                  <div className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-secondary flex items-center justify-center group-hover:bg-accent group-hover:text-white text-accent transition-all duration-500">
+                    <item.icon className="w-7 h-7" />
+                  </div>
+                  <h3 className="font-heading text-lg font-bold text-text mb-2">{item.title}</h3>
+                  <p className="text-text-light text-sm leading-relaxed">{item.description}</p>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Right side: Happy customer collage */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="lg:col-span-5 relative group w-full"
+            >
+              <div className="relative rounded-3xl overflow-hidden shadow-lg shadow-accent/5 hover:shadow-xl hover:shadow-accent/15 transition-all duration-500 aspect-[4/3] lg:aspect-square">
+                <img
+                  src="/happyCustomer/customer collage.png"
+                  alt="Our Happy Customers"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/25 to-transparent" />
+                <div className="absolute bottom-6 left-6 right-6 text-white">
+                  <span className="px-3 py-1 bg-accent text-white text-[10px] font-bold rounded-full uppercase tracking-wider mb-2 inline-block">
+                    Customer Love
+                  </span>
+                  <h4 className="font-heading text-xl font-bold mb-1">
+                    Loved by 1000+ Customers
+                  </h4>
+                  <p className="text-white/80 text-xs">
+                    Crafting smiles and sharing special moments across Ranchi.
+                  </p>
                 </div>
-                <h3 className="font-heading text-lg font-bold text-text mb-2">{item.title}</h3>
-                <p className="text-text-light text-sm leading-relaxed">{item.description}</p>
-              </motion.div>
-            ))}
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>

@@ -1,14 +1,37 @@
 import { useForm } from 'react-hook-form';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
 import toast from 'react-hot-toast';
 import { FaWhatsapp } from 'react-icons/fa';
 import { Send } from 'lucide-react';
 import SectionHeading from '../components/SectionHeading';
-import { cakes } from '../data/cakes';
 import type { OrderFormData } from '../types';
 
 const weights = ['250g', '500g', '1kg', '2kg', '3kg', '5kg'];
+
+const cakeOptions = [
+  'Vanilla Cake',
+  'Pineapple Cake',
+  'Butterscotch Cake',
+  'Strawberry Cake',
+  'Mix Fruit Cake',
+  'Fresh Fruit Cake',
+  'Black Forest Cake',
+  'White Forest Cake',
+  'Chocolate Cake',
+  'Oreo Cake',
+  'Rashmalai Cake',
+  'Red Velvet Cake',
+  'KitKat Cake',
+  'Chocolate Tiffle Cake',
+  'Nutella Cake',
+  'Lotus Biscoff Cake',
+  'Ferrero Rocher Cake',
+  'Anniversary Custom Cake',
+  'Birthday Custom Cake',
+  'Retirement Custom Cake',
+  'Custom Cake',
+];
 
 const inputClass =
   'w-full px-4 py-3 rounded-xl border border-secondary bg-white text-text placeholder:text-text-light/50 focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent transition-all duration-300 text-sm';
@@ -19,12 +42,18 @@ export default function Order() {
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors },
   } = useForm<OrderFormData>();
 
+  // eslint-disable-next-line react-hooks/incompatible-library
+  const selectedCake = watch('cakeSelection');
+
   const onSubmit = (data: OrderFormData) => {
-    const selectedCake = cakes.find((c) => c.id === data.cakeSelection);
-    const cakeName = selectedCake?.name || data.cakeSelection;
+    let cakeName = data.cakeSelection;
+    if (cakeName === 'Custom Cake' && data.customCakeText) {
+      cakeName = `Custom Cake (${data.customCakeText})`;
+    }
 
     const message = `Hello ROSHH CAKES,%0A%0AI would like to order:%0A%0A• *Cake:* ${encodeURIComponent(cakeName)}%0A• *Weight:* ${encodeURIComponent(data.cakeWeight)}%0A• *Quantity:* ${encodeURIComponent(String(data.quantity))}%0A• *Delivery Date:* ${encodeURIComponent(data.deliveryDate)}%0A• *Message on Cake:* ${encodeURIComponent(data.messageOnCake || 'None')}%0A• *Additional Notes:* ${encodeURIComponent(data.additionalNotes || 'None')}%0A%0A*What is the price of this cake?*%0A%0A*Customer Details:*%0A• Name: ${encodeURIComponent(data.customerName)}%0A• Phone: ${encodeURIComponent(data.phone)}%0A%0APlease let me know the total price and availability. Thank you!`;
 
@@ -126,7 +155,6 @@ export default function Order() {
               </div>
             </div>
 
-
             {/* Cake Selection & Weight */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               <div>
@@ -139,9 +167,9 @@ export default function Order() {
                   {...register('cakeSelection', { required: 'Please select a cake' })}
                 >
                   <option value="">Choose a cake</option>
-                  {cakes.map((c) => (
-                    <option key={c.id} value={c.id}>
-                      {c.name}
+                  {cakeOptions.map((option) => (
+                    <option key={option} value={option}>
+                      {option}
                     </option>
                   ))}
                 </select>
@@ -171,6 +199,32 @@ export default function Order() {
                 )}
               </div>
             </div>
+
+            {/* Custom Cake Text Input (Animated) */}
+            <AnimatePresence>
+              {selectedCake === 'Custom Cake' && (
+                <motion.div
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: 'auto' }}
+                  exit={{ opacity: 0, height: 0 }}
+                  className="overflow-hidden"
+                >
+                  <label htmlFor="customCakeText" className={labelClass}>
+                    Custom Cake Details (Flavor / Design / Description) <span className="text-accent">*</span>
+                  </label>
+                  <input
+                    id="customCakeText"
+                    type="text"
+                    placeholder="Describe your custom cake (e.g. Pineapple with white frosting)"
+                    className={inputClass}
+                    {...register('customCakeText', { required: 'Please describe your custom cake' })}
+                  />
+                  {errors.customCakeText && (
+                    <p className="text-accent text-xs mt-1">{errors.customCakeText.message}</p>
+                  )}
+                </motion.div>
+              )}
+            </AnimatePresence>
 
             {/* Quantity & Delivery Date */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
