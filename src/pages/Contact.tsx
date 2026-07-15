@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
-import { Phone, Mail, MapPin, Clock, ExternalLink } from 'lucide-react';
+import { Phone, MapPin, Clock, ExternalLink } from 'lucide-react';
 import { FaWhatsapp, FaInstagram } from 'react-icons/fa';
 import SectionHeading from '../components/SectionHeading';
 
@@ -11,13 +11,6 @@ const contactInfo = [
     value: '+91 90603 69578',
     href: 'tel:+919060369578',
     color: 'bg-blue-50 text-blue-600',
-  },
-  {
-    icon: Mail,
-    title: 'Email',
-    value: 'roshhcakes@gmail.com',
-    href: 'mailto:roshhcakes@gmail.com',
-    color: 'bg-red-50 text-red-500',
   },
   {
     icon: FaWhatsapp,

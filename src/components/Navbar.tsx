@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Camera } from 'lucide-react';
+import logo from '../assets/logo.svg';
 
 const navLinks = [
   { path: '/', label: 'Home' },
@@ -30,55 +31,46 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? 'glass shadow-lg shadow-accent/5 py-2'
-          : 'bg-transparent py-4'
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
+        ? "glass shadow-lg shadow-accent/5 h-16"
+        : "bg-white/95 backdrop-blur-md h-20"
+        }`}
     >
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+      <nav className="max-w-7xl mx-auto h-full px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-2.5 group" onClick={() => setIsOpen(false)}>
-          {/* PDF logo with styled text fallback */}
-          <div className="relative w-10 h-10 rounded-full overflow-hidden group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
-            <object
-              data="/logo/ROSHH CAKES logo2.pdf"
-              type="application/pdf"
-              className="w-full h-full"
-              aria-label="ROSHH CAKES Logo"
-            >
-              {/* Fallback: styled cake icon */}
-              <div className="w-full h-full bg-gradient-to-br from-accent to-accent-dark flex items-center justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
-                  <path d="M20 21v-8a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8"/>
-                  <path d="M4 16s.5-1 2-1 2.5 2 4 2 2.5-2 4-2 2 1 2 1"/>
-                  <path d="M2 21h20"/>
-                  <path d="M7 8v3"/>
-                  <path d="M12 8v3"/>
-                  <path d="M17 8v3"/>
-                  <path d="M7 4h.01"/>
-                  <path d="M12 4h.01"/>
-                  <path d="M17 4h.01"/>
-                </svg>
-              </div>
-            </object>
+        <Link
+          to="/"
+          onClick={() => setIsOpen(false)}
+          className="flex items-center gap-3 group h-full"
+        >
+          {/* Logo */}
+          <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-white shadow-md flex items-center justify-center overflow-hidden flex-shrink-0 transition-all duration-300 group-hover:scale-105">
+            <img
+              src={logo}
+              alt="ROSHH CAKES Logo"
+              className="w-full h-full object-contain scale-[1.8]"
+            />
           </div>
-          <span className="font-heading text-xl md:text-2xl font-bold text-text tracking-wide">
-            ROSHH <span className="text-accent">CAKES</span>
-          </span>
+
+          {/* Brand */}
+          <div className="leading-none">
+            <h1 className="font-heading text-2xl font-bold tracking-wide">
+              <span className="text-text">ROSHH </span>
+              <span className="text-accent">CAKES</span>
+            </h1>
+          </div>
         </Link>
 
         {/* Desktop links */}
-        <ul className="hidden md:flex items-center gap-1">
+        <ul className="hidden md:flex items-center gap-2">
           {navLinks.filter(l => l.path !== '/order').map((link) => (
             <li key={link.path}>
               <NavLink
                 to={link.path}
                 className={({ isActive }) =>
-                  `relative px-3 py-2 rounded-full text-sm font-medium transition-all duration-300 flex items-center gap-1.5 ${
-                    isActive
-                      ? 'text-accent bg-secondary'
-                      : 'text-text hover:text-accent hover:bg-secondary/50'
+                  `relative px-3 py-2 rounded-full text-sm font-medium transition-all duration-300 flex items-center gap-1.5 ${isActive
+                    ? 'text-accent bg-secondary'
+                    : 'text-text hover:text-accent hover:bg-secondary/50'
                   } ${link.path === '/raw-images' ? 'border border-accent/30 hover:border-accent/60' : ''}`
                 }
               >
@@ -90,7 +82,7 @@ export default function Navbar() {
           <li className="ml-2">
             <Link
               to="/order"
-              className="px-5 py-2.5 bg-accent text-white rounded-full text-sm font-semibold hover:bg-accent-dark transition-all duration-300 hover:shadow-lg hover:shadow-accent/30 hover:-translate-y-0.5"
+              className="px-6 py-2.5 bg-accent text-white rounded-full text-sm font-semibold hover:bg-accent-dark transition-all duration-300 hover:shadow-lg hover:shadow-accent/30"
             >
               Order Now
             </Link>
@@ -100,8 +92,7 @@ export default function Navbar() {
         {/* Mobile hamburger */}
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden relative z-50 w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-accent hover:bg-accent hover:text-white transition-colors duration-300"
-          aria-label="Toggle menu"
+          className="md:hidden relative z-50 w-11 h-11 rounded-full bg-secondary flex items-center justify-center text-accent hover:bg-accent hover:text-white transition-all duration-300"
         >
           {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
         </button>
@@ -129,8 +120,7 @@ export default function Navbar() {
                     to={link.path}
                     onClick={() => setIsOpen(false)}
                     className={({ isActive }) =>
-                      `text-2xl font-heading font-semibold transition-colors duration-200 flex items-center gap-2 ${
-                        isActive ? 'text-accent' : 'text-text hover:text-accent'
+                      `text-2xl font-heading font-semibold transition-colors duration-200 flex items-center gap-2 ${isActive ? 'text-accent' : 'text-text hover:text-accent'
                       }`
                     }
                   >
