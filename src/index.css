@@ -1,5 +1,6 @@
 @import "tailwindcss";
 
+/* stylelint-disable at-rule-no-unknown */
 @theme {
   --color-bg: #FFFFFF;
   --color-secondary: #FFE8EF;

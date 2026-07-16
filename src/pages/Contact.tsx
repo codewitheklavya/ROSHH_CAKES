@@ -45,7 +45,7 @@ export default function Contact() {
       {/* Hero banner */}
       <section className="relative h-64 md:h-80 flex items-center justify-center overflow-hidden">
         <img
-          src="/anniversaryCake/ChatGPT Image Jul 9, 2026, 05_19_19 PM.png"
+          src="/store/Untitled design.png"
           alt="Contact ROSHH CAKES"
           className="absolute inset-0 w-full h-full object-cover"
         />
