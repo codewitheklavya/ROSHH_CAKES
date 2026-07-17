@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
-import { Phone, MapPin, Clock, ExternalLink } from 'lucide-react';
+import { Phone, MapPin, Clock, ExternalLink, Mail } from 'lucide-react';
 import { FaWhatsapp, FaInstagram } from 'react-icons/fa';
 import SectionHeading from '../components/SectionHeading';
 
@@ -25,6 +25,13 @@ const contactInfo = [
     value: '@roshh_cakes',
     href: 'https://instagram.com/roshh_cakes',
     color: 'bg-pink-50 text-pink-600',
+  },
+  {
+    icon: Mail,
+    title: 'Gmail',
+    value: 'roshhcakes@gmail.com',
+    href: 'mailto:roshhcakes@gmail.com',
+    color: 'bg-red-50 text-red-500',
   },
 ];
 

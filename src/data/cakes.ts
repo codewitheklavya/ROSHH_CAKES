@@ -22,7 +22,7 @@ export const categories: Category[] = [
   {
     id: 'wedding',
     name: 'Wedding Cakes',
-    image: 'public/anniversaryCake/db8aca82731a45a892f6bcfb24a28286 (1).jpg ',
+    image: '/public/anniversaryCake/db8aca82731a45a892f6bcfb24a28286 (1).jpg ',
     description: 'Grand, multi-tiered cakes for your most special day.',
   },
   {
@@ -179,6 +179,27 @@ export const cakes: Cake[] = [
     price: 799,
     image: '/anniversaryCake/db8aca82731a45a892f6bcfb24a28286 (1).jpg',
     category: 'anniversary',
+    weights: ['1kg', '2kg', '3kg'],
+    isEggless: true,
+  },
+  //wedding cakes
+  {
+    id: 'wedding-cake-1',
+    name: 'Wedding Cake',
+    description: 'Adorable mini cake perfect for intimate celebrations and gifting.',
+    price: 449,
+    image: '/customCake/20260406_132344.jpg',
+    category: 'wedding',
+    weights: ['1kg', '2kg', '3kg'],
+    isEggless: true,
+  },
+  {
+    id: 'wedding-cake-2',
+    name: 'Wedding Cake',
+    description: 'Adorable mini cake perfect for intimate celebrations and gifting.',
+    price: 449,
+    image: '/customCake/20260411_122824.jpg',
+    category: 'wedding',
     weights: ['1kg', '2kg', '3kg'],
     isEggless: true,
   },
