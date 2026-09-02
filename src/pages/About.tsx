@@ -81,7 +81,7 @@ export default function About() {
       </section>
 
       {/* Intro */}
-      <section className="py-20 bg-bg">
+      <section className="py-20 bg-bg overflow-hidden">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeading
             title="Our Journey"
@@ -92,8 +92,8 @@ export default function About() {
             {values.map((item, i) => (
               <motion.div
                 key={item.title}
-                initial={{ opacity: 0, x: i % 2 === 0 ? -40 : 40 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-50px' }}
                 transition={{ duration: 0.5 }}
                 className={`flex flex-col md:flex-row items-center gap-8 ${

@@ -72,11 +72,6 @@ export default function Order() {
       cakeName = `Custom Cake (${data.customCakeText})`;
     }
 
-    // Build the price line if we have pre-selected cake data
-    const priceLine = preSelectedCake
-      ? `%0A• *Price:* ₹${preSelectedCake.price} onwards`
-      : '';
-
     // Build the image line — use the cake's image path as a full URL
     const imageUrl = preSelectedCake
       ? `${window.location.origin}${preSelectedCake.image}`
@@ -86,7 +81,7 @@ export default function Order() {
       : '';
 
     const message =
-      `Hello ROSHH CAKES,%0A%0AI would like to order:%0A%0A• *Cake:* ${encodeURIComponent(cakeName)}${priceLine}%0A• *Weight:* ${encodeURIComponent(data.cakeWeight)}%0A• *Quantity:* ${encodeURIComponent(String(data.quantity))}%0A• *Delivery Date:* ${encodeURIComponent(data.deliveryDate)}%0A• *Message on Cake:* ${encodeURIComponent(data.messageOnCake || 'None')}%0A• *Additional Notes:* ${encodeURIComponent(data.additionalNotes || 'None')}%0A%0A*Customer Details:*%0A• Name: ${encodeURIComponent(data.customerName)}%0A• Phone: ${encodeURIComponent(data.phone)}${imageLine}%0A%0APlease let me know the total price and availability. Thank you!`;
+      `Hello ROSHH CAKES,%0A%0AI would like to order:%0A%0A• *Cake:* ${encodeURIComponent(cakeName)}%0A• *Weight:* ${encodeURIComponent(data.cakeWeight)}%0A• *Quantity:* ${encodeURIComponent(String(data.quantity))}%0A• *Delivery Date:* ${encodeURIComponent(data.deliveryDate)}%0A• *Message on Cake:* ${encodeURIComponent(data.messageOnCake || 'None')}%0A• *Additional Notes:* ${encodeURIComponent(data.additionalNotes || 'None')}%0A%0A*Customer Details:*%0A• Name: ${encodeURIComponent(data.customerName)}%0A• Phone: ${encodeURIComponent(data.phone)}${imageLine}%0A%0APlease let me know the total price and availability. Thank you!`;
 
     const url = `https://wa.me/919060369578?text=${message}`;
 
@@ -156,7 +151,6 @@ export default function Order() {
               <div>
                 <p className="text-xs font-medium text-text-light uppercase tracking-wider mb-0.5">Ordering</p>
                 <p className="font-heading font-bold text-text text-lg leading-tight">{preSelectedCake.name}</p>
-                <p className="text-accent text-sm font-semibold">Starting at ₹{preSelectedCake.price}</p>
               </div>
             </motion.div>
           )}

@@ -10,7 +10,7 @@ export const categories: Category[] = [
   {
     id: 'anniversary',
     name: 'Anniversary Cakes',
-    image: 'public/anniversaryCake/11153f2ef3007863a8cf7e139013635a (2).jpg',
+    image: '/anniversaryCake/11153f2ef3007863a8cf7e139013635a (2).jpg',
     description: 'Celebrate love with elegant and romantic anniversary cakes.',
   },
   {
@@ -22,7 +22,7 @@ export const categories: Category[] = [
   {
     id: 'wedding',
     name: 'Wedding Cakes',
-    image: '/public/anniversaryCake/db8aca82731a45a892f6bcfb24a28286 (1).jpg ',
+    image: '/anniversaryCake/db8aca82731a45a892f6bcfb24a28286 (1).jpg',
     description: 'Grand, multi-tiered cakes for your most special day.',
   },
   {

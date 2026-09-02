@@ -77,7 +77,7 @@ export default function Contact() {
       </section>
 
       {/* Contact Info */}
-      <section className="py-20 bg-bg">
+      <section className="py-20 bg-bg overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeading
             title="Get In Touch"
@@ -118,8 +118,8 @@ export default function Contact() {
             <div className="space-y-8">
               {/* Address */}
               <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 className="bg-white rounded-2xl p-6 shadow-sm"
               >
@@ -147,8 +147,8 @@ export default function Contact() {
 
               {/* Opening hours */}
               <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.1 }}
                 className="bg-white rounded-2xl p-6 shadow-sm"
@@ -174,8 +174,8 @@ export default function Contact() {
 
             {/* Right: Map */}
             <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               className="rounded-2xl overflow-hidden shadow-md h-80 lg:h-full min-h-[320px]"
             >
