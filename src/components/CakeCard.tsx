@@ -72,7 +72,7 @@ export default function CakeCard({ cake, index = 0 }: CakeCardProps) {
         {/* Price & CTA */}
         <div className="flex items-center justify-center mt-auto pt-3 border-t border-secondary">
           <Link
-            to="/order"
+            to={`/order?cakeId=${cake.id}`}
             className="w-full text-center px-4 py-2 bg-accent text-white text-sm font-semibold rounded-full hover:bg-accent-dark hover:shadow-lg hover:shadow-accent/20 hover:-translate-y-0.5 transition-all duration-300"
           >
             Order Now

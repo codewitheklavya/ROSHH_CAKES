@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
@@ -6,6 +8,7 @@ import { FaWhatsapp } from 'react-icons/fa';
 import { Send } from 'lucide-react';
 import SectionHeading from '../components/SectionHeading';
 import type { OrderFormData } from '../types';
+import { cakes } from '../data/cakes';
 
 const weights = ['250g', '500g', '1kg', '2kg', '3kg', '5kg'];
 
@@ -39,12 +42,26 @@ const inputClass =
 const labelClass = 'block text-sm font-medium text-text mb-1.5';
 
 export default function Order() {
+  const [searchParams] = useSearchParams();
+  const cakeId = searchParams.get('cakeId');
+
+  // Find the pre-selected cake from the data if cakeId is in the URL
+  const preSelectedCake = cakeId ? cakes.find((c) => c.id === cakeId) ?? null : null;
+
   const {
     register,
     handleSubmit,
     watch,
+    setValue,
     formState: { errors },
   } = useForm<OrderFormData>();
+
+  // When a cake is pre-selected via URL, silently set the cakeSelection value
+  useEffect(() => {
+    if (preSelectedCake) {
+      setValue('cakeSelection', preSelectedCake.name, { shouldValidate: false });
+    }
+  }, [preSelectedCake, setValue]);
 
   // eslint-disable-next-line react-hooks/incompatible-library
   const selectedCake = watch('cakeSelection');
@@ -55,7 +72,21 @@ export default function Order() {
       cakeName = `Custom Cake (${data.customCakeText})`;
     }
 
-    const message = `Hello ROSHH CAKES,%0A%0AI would like to order:%0A%0A• *Cake:* ${encodeURIComponent(cakeName)}%0A• *Weight:* ${encodeURIComponent(data.cakeWeight)}%0A• *Quantity:* ${encodeURIComponent(String(data.quantity))}%0A• *Delivery Date:* ${encodeURIComponent(data.deliveryDate)}%0A• *Message on Cake:* ${encodeURIComponent(data.messageOnCake || 'None')}%0A• *Additional Notes:* ${encodeURIComponent(data.additionalNotes || 'None')}%0A%0A*What is the price of this cake?*%0A%0A*Customer Details:*%0A• Name: ${encodeURIComponent(data.customerName)}%0A• Phone: ${encodeURIComponent(data.phone)}%0A%0APlease let me know the total price and availability. Thank you!`;
+    // Build the price line if we have pre-selected cake data
+    const priceLine = preSelectedCake
+      ? `%0A• *Price:* ₹${preSelectedCake.price} onwards`
+      : '';
+
+    // Build the image line — use the cake's image path as a full URL
+    const imageUrl = preSelectedCake
+      ? `${window.location.origin}${preSelectedCake.image}`
+      : '';
+    const imageLine = imageUrl
+      ? `%0A%0A📷 *Cake Image:* ${encodeURIComponent(imageUrl)}`
+      : '';
+
+    const message =
+      `Hello ROSHH CAKES,%0A%0AI would like to order:%0A%0A• *Cake:* ${encodeURIComponent(cakeName)}${priceLine}%0A• *Weight:* ${encodeURIComponent(data.cakeWeight)}%0A• *Quantity:* ${encodeURIComponent(String(data.quantity))}%0A• *Delivery Date:* ${encodeURIComponent(data.deliveryDate)}%0A• *Message on Cake:* ${encodeURIComponent(data.messageOnCake || 'None')}%0A• *Additional Notes:* ${encodeURIComponent(data.additionalNotes || 'None')}%0A%0A*Customer Details:*%0A• Name: ${encodeURIComponent(data.customerName)}%0A• Phone: ${encodeURIComponent(data.phone)}${imageLine}%0A%0APlease let me know the total price and availability. Thank you!`;
 
     const url = `https://wa.me/919060369578?text=${message}`;
 
@@ -110,6 +141,26 @@ export default function Order() {
             subtitle="Fill in your details below and click 'Order on WhatsApp' to send your order directly."
           />
 
+          {/* Selected cake banner — shown only when pre-selected via URL */}
+          {preSelectedCake && (
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="mb-6 flex items-center gap-4 bg-secondary/60 border border-accent/20 rounded-2xl px-5 py-4"
+            >
+              <img
+                src={preSelectedCake.image}
+                alt={preSelectedCake.name}
+                className="w-16 h-16 rounded-xl object-cover flex-shrink-0"
+              />
+              <div>
+                <p className="text-xs font-medium text-text-light uppercase tracking-wider mb-0.5">Ordering</p>
+                <p className="font-heading font-bold text-text text-lg leading-tight">{preSelectedCake.name}</p>
+                <p className="text-accent text-sm font-semibold">Starting at ₹{preSelectedCake.price}</p>
+              </div>
+            </motion.div>
+          )}
+
           <motion.form
             onSubmit={handleSubmit(onSubmit)}
             initial={{ opacity: 0, y: 30 }}
@@ -157,28 +208,31 @@ export default function Order() {
 
             {/* Cake Selection & Weight */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-              <div>
-                <label htmlFor="cakeSelection" className={labelClass}>
-                  Select Cake <span className="text-accent">*</span>
-                </label>
-                <select
-                  id="cakeSelection"
-                  className={inputClass}
-                  {...register('cakeSelection', { required: 'Please select a cake' })}
-                >
-                  <option value="">Choose a cake</option>
-                  {cakeOptions.map((option) => (
-                    <option key={option} value={option}>
-                      {option}
-                    </option>
-                  ))}
-                </select>
-                {errors.cakeSelection && (
-                  <p className="text-accent text-xs mt-1">{errors.cakeSelection.message}</p>
-                )}
-              </div>
+              {/* Cake selector: hidden when pre-selected via URL, visible for direct /order visits */}
+              {!preSelectedCake && (
+                <div>
+                  <label htmlFor="cakeSelection" className={labelClass}>
+                    Select Cake <span className="text-accent">*</span>
+                  </label>
+                  <select
+                    id="cakeSelection"
+                    className={inputClass}
+                    {...register('cakeSelection', { required: 'Please select a cake' })}
+                  >
+                    <option value="">Choose a cake</option>
+                    {cakeOptions.map((option) => (
+                      <option key={option} value={option}>
+                        {option}
+                      </option>
+                    ))}
+                  </select>
+                  {errors.cakeSelection && (
+                    <p className="text-accent text-xs mt-1">{errors.cakeSelection.message}</p>
+                  )}
+                </div>
+              )}
 
-              <div>
+              <div className={preSelectedCake ? 'sm:col-span-2' : ''}>
                 <label htmlFor="cakeWeight" className={labelClass}>
                   Cake Weight <span className="text-accent">*</span>
                 </label>
@@ -200,9 +254,9 @@ export default function Order() {
               </div>
             </div>
 
-            {/* Custom Cake Text Input (Animated) */}
+            {/* Custom Cake Text Input (Animated) — only relevant when dropdown is visible */}
             <AnimatePresence>
-              {selectedCake === 'Custom Cake' && (
+              {!preSelectedCake && selectedCake === 'Custom Cake' && (
                 <motion.div
                   initial={{ opacity: 0, height: 0 }}
                   animate={{ opacity: 1, height: 'auto' }}
