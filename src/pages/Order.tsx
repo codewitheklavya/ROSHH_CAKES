@@ -23,10 +23,10 @@ const cakeOptions = [
   'White Forest Cake',
   'Chocolate Cake',
   'Oreo Cake',
-  'Rashmalai Cake',
+  'Rasmalai Cake',
   'Red Velvet Cake',
   'KitKat Cake',
-  'Chocolate Tiffle Cake',
+  'Chocolate Truffle Cake',
   'Nutella Cake',
   'Lotus Biscoff Cake',
   'Ferrero Rocher Cake',
@@ -72,18 +72,34 @@ export default function Order() {
       cakeName = `Custom Cake (${data.customCakeText})`;
     }
 
-    // Build the image line — use the cake's image path as a full URL
-    const imageUrl = preSelectedCake
-      ? `${window.location.origin}${preSelectedCake.image}`
-      : '';
-    const imageLine = imageUrl
-      ? `%0A%0A📷 *Cake Image:* ${encodeURIComponent(imageUrl)}`
+    const selectedCakeObj = preSelectedCake || cakes.find((c) => c.name === data.cakeSelection || c.id === data.cakeSelection);
+    const imageUrl = selectedCakeObj
+      ? `${window.location.origin}${selectedCakeObj.image}`
       : '';
 
-    const message =
-      `Hello ROSHH CAKES,%0A%0AI would like to order:%0A%0A• *Cake:* ${encodeURIComponent(cakeName)}%0A• *Weight:* ${encodeURIComponent(data.cakeWeight)}%0A• *Quantity:* ${encodeURIComponent(String(data.quantity))}%0A• *Delivery Date:* ${encodeURIComponent(data.deliveryDate)}%0A• *Message on Cake:* ${encodeURIComponent(data.messageOnCake || 'None')}%0A• *Additional Notes:* ${encodeURIComponent(data.additionalNotes || 'None')}%0A%0A*Customer Details:*%0A• Name: ${encodeURIComponent(data.customerName)}%0A• Phone: ${encodeURIComponent(data.phone)}${imageLine}%0A%0APlease let me know the total price and availability. Thank you!`;
+    const messageLines = [
+      '🍰 *NEW CAKE ORDER - RossCake*',
+      '',
+      `*Cake:* ${cakeName}`,
+      `*Weight:* ${data.cakeWeight}`,
+      `*Quantity:* ${data.quantity}`,
+      `*Delivery Date:* ${data.deliveryDate}`,
+      `*Message on Cake:* ${data.messageOnCake || 'None'}`,
+      `*Additional Notes:* ${data.additionalNotes || 'None'}`,
+      '',
+      '*Customer Details:*',
+      `• Name: ${data.customerName}`,
+      `• Phone: ${data.phone}`,
+    ];
 
-    const url = `https://wa.me/919060369578?text=${message}`;
+    if (imageUrl) {
+      messageLines.push('', '*Cake Image:*', imageUrl);
+    }
+
+    messageLines.push('', 'Please let me know the total price and availability. Thank you!');
+
+    const fullMessage = messageLines.join('\n');
+    const url = `https://wa.me/919060369578?text=${encodeURIComponent(fullMessage)}`;
 
     toast.success('Redirecting to WhatsApp...', { icon: '🎂' });
 
@@ -104,7 +120,7 @@ export default function Order() {
       {/* Hero banner */}
       <section className="relative h-64 md:h-80 flex items-center justify-center overflow-hidden">
         <img
-          src="/heroCake/ChatGPT Image Jul 9, 2026, 05_19_26 PM.png"
+          src="/heroCake/hero-premium.png"
           alt="Order a Cake"
           className="absolute inset-0 w-full h-full object-cover"
         />

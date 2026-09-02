@@ -37,7 +37,7 @@ export default function Cakes() {
       {/* Hero banner */}
       <section className="relative h-64 md:h-80 flex items-center justify-center overflow-hidden">
         <img
-          src="/birthdayCake/ChatGPT Image Jul 9, 2026, 05_18_50 PM.png"
+          src="/birthdayCake/birthday-cake.png"
           alt="Our Cakes"
           className="absolute inset-0 w-full h-full object-cover"
         />

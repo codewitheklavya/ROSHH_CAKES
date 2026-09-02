@@ -21,7 +21,7 @@ export default function Gallery() {
       {/* Hero banner */}
       <section className="relative h-64 md:h-80 flex items-center justify-center overflow-hidden">
         <img
-          src="/BentoCakes/ChatGPT Image Jul 9, 2026, 05_19_11 PM.png"
+          src="/BentoCakes/floral-bento.png"
           alt="Gallery"
           className="absolute inset-0 w-full h-full object-cover"
         />

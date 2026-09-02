@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Phone, Mail, MapPin, Clock } from 'lucide-react';
-import { FaWhatsapp, FaInstagram } from 'react-icons/fa';
+import { FaWhatsapp, FaInstagram, FaYoutube } from 'react-icons/fa';
 import logo from '../assets/logo.svg';
 
 export default function Footer() {
@@ -46,6 +46,15 @@ export default function Footer() {
                 aria-label="Instagram"
               >
                 <FaInstagram className="w-5 h-5" />
+              </a>
+              <a
+                href="https://youtube.com/@roshnidvlogs?si=zZ-mCYHcvmD_UBIK"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-red-600 transition-colors duration-300"
+                aria-label="YouTube"
+              >
+                <FaYoutube className="w-5 h-5" />
               </a>
             </div>
           </div>

@@ -56,7 +56,7 @@ export default function About() {
       {/* Hero banner */}
       <section className="relative h-72 md:h-96 flex items-center justify-center overflow-hidden">
         <img
-          src="/heroCake/ChatGPT Image Jul 9, 2026, 05_19_26 PM.png"
+          src="/heroCake/hero-premium.png"
           alt="About ROSHH CAKES"
           className="absolute inset-0 w-full h-full object-cover"
         />
@@ -152,13 +152,13 @@ export default function About() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
             {[
               {
-                src: '/happyCustomer/customer collage.png',
+                src: '/happyCustomer/customer-collage.png',
                 alt: 'ROSHH CAKES Happy Customers Collage 1',
                 title: 'Celebrations Filled with Joy',
                 description: 'Moments of laughter and sweet memories shared by our lovely customers across Ranchi.'
               },
               {
-                src: '/happyCustomer/collage 2.png',
+                src: '/happyCustomer/collage-2.png',
                 alt: 'ROSHH CAKES Happy Customers Collage 2',
                 title: 'Baked with Love & Smiles',
                 description: 'Celebrating milestones, birthdays, anniversaries, and everything in between with our signature custom creations.'
@@ -200,9 +200,9 @@ export default function About() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
             {[
-              '/anniversaryCake/ChatGPT Image Jul 9, 2026, 05_19_19 PM.png',
-              '/birthdayCake/ChatGPT Image Jul 9, 2026, 05_18_50 PM.png',
-              '/BentoCakes/ChatGPT Image Jul 9, 2026, 05_19_04 PM.png',
+              '/anniversaryCake/royal-anniversary.png',
+              '/birthdayCake/birthday-cake.png',
+              '/BentoCakes/cute-bento.png',
             ].map((src, i) => (
               <motion.div
                 key={src}

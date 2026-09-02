@@ -23,14 +23,14 @@ import { cakes, categories, testimonials } from '../data/cakes';
 
 const heroSlides = [
   {
-    image: "/store/Hero section.png",
+    image: "/store/hero-section.png",
     tag: '✨ Premium Bakery in Ranchi',
     title: 'ROSHH',
     titleAccent: 'CAKES',
     subtitle: 'Where every slice tells a story. Handcrafted premium cakes for birthdays, weddings, anniversaries & every sweet moment in between.',
   },
   {
-    image: "/heroCake/ChatGPT Image Jul 14, 2026, 05_00_06 PM.png",
+    image: "/heroCake/hero-birthday.png",
     tag: '🎂 Birthday Specials',
     title: 'Celebrate',
     titleAccent: 'Every Moment',
@@ -44,7 +44,7 @@ const heroSlides = [
     subtitle: 'Celebrate your love journey with elegant, multi-tiered anniversary masterpieces tailored to your unique story.',
   },
   {
-    image: "/heroCake/ChatGPT Image Jul 14, 2026, 04_45_25 PM.png",
+    image: "/heroCake/hero-custom.png",
     tag: '🎁 Custom Cakes',
     title: 'Cake has',
     titleAccent: 'Big Heart',
@@ -348,7 +348,7 @@ export default function Home() {
             >
               <div className="relative rounded-3xl overflow-hidden shadow-lg shadow-accent/5 hover:shadow-xl hover:shadow-accent/15 transition-all duration-500 aspect-[4/3] lg:aspect-square">
                 <img
-                  src="/happyCustomer/customer collage.png"
+                  src="/happyCustomer/customer-collage.png"
                   alt="Our Happy Customers"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                   loading="lazy"

@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
 import { Phone, MapPin, Clock, ExternalLink, Mail } from 'lucide-react';
-import { FaWhatsapp, FaInstagram } from 'react-icons/fa';
+import { FaWhatsapp, FaInstagram, FaYoutube } from 'react-icons/fa';
 import SectionHeading from '../components/SectionHeading';
 
 const contactInfo = [
@@ -25,6 +25,13 @@ const contactInfo = [
     value: '@roshh_cakes',
     href: 'https://instagram.com/roshh_cakes',
     color: 'bg-pink-50 text-pink-600',
+  },
+  {
+    icon: FaYoutube,
+    title: 'YouTube',
+    value: '@roshnidvlogs',
+    href: 'https://youtube.com/@roshnidvlogs?si=zZ-mCYHcvmD_UBIK',
+    color: 'bg-red-50 text-red-600',
   },
   {
     icon: Mail,
@@ -52,7 +59,7 @@ export default function Contact() {
       {/* Hero banner */}
       <section className="relative h-64 md:h-80 flex items-center justify-center overflow-hidden">
         <img
-          src="/store/Untitled design.png"
+          src="/store/store-design.png"
           alt="Contact ROSHH CAKES"
           className="absolute inset-0 w-full h-full object-cover"
         />
@@ -85,7 +92,7 @@ export default function Contact() {
           />
 
           {/* Cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 lg:gap-5 mb-16">
             {contactInfo.map((item, i) => (
               <motion.a
                 key={item.title}
