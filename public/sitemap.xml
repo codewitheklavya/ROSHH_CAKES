@@ -26,8 +26,10 @@
     <loc>https://roshhcakes.in/order</loc>
   </url>
 
-  <url>
-    <loc>https://roshhcakes.in/raw-images</loc>
-  </url>
 
-</urlset>
+
+    <url>
+        <loc>https://roshhcakes.in/raw-images</loc>
+    </url>
+    
+  </urlset>
