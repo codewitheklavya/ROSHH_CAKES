@@ -46,7 +46,7 @@ export default function About() {
   return (
     <>
       <Helmet>
-        <title>About Us — ROSHH CAKES</title>
+        <title>About ROSHH CAKES | Premium Cake Shop in Ranchi</title>
         <meta
           name="description"
           content="Learn about ROSHH CAKES — our story, commitment to quality, fresh ingredients, and custom cake expertise."

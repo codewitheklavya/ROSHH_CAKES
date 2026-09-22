@@ -52,7 +52,7 @@ export default function Contact() {
   return (
     <>
       <Helmet>
-        <title>Contact Us — ROSHH CAKES</title>
+        <title>Contact Us — ROSHH CAKES in Ranchi</title>
         <meta name="description" content="Get in touch with ROSHH CAKES. Call, WhatsApp, or visit us in Namkum, Ranchi." />
       </Helmet>
 

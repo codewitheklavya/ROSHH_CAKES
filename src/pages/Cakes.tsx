@@ -27,7 +27,7 @@ export default function Cakes() {
   return (
     <>
       <Helmet>
-        <title>Our Cakes — ROSHH CAKES</title>
+        <title>Our Cakes — ROSHH CAKES in Ranchi</title>
         <meta
           name="description"
           content="Browse our collection of premium cakes and treats — birthday, anniversary, bento, wedding, jar cakes, donuts, and custom designs."

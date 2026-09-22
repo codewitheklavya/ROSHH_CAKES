@@ -14,7 +14,7 @@ export default function Gallery() {
   return (
     <>
       <Helmet>
-        <title>Gallery — ROSHH CAKES</title>
+        <title>Gallery — ROSHH CAKES in Ranchi</title>
         <meta name="description" content="Browse our gallery of beautifully crafted premium cakes." />
       </Helmet>
 
